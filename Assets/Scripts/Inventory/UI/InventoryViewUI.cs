@@ -58,7 +58,7 @@ public class InventoryViewUI : MonoBehaviour
             _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             _gridLayoutGroup.constraintCount = numColumns;
         }
-        else Debug.LogError("GridLayoutGroup is null in FillInventory!");
+        else Debug.LogError("GridLayoutGroup is null.");
         
         for (int r = 0; r < numRows; r++)
         {
@@ -77,12 +77,12 @@ public class InventoryViewUI : MonoBehaviour
     {
         if (_itemUIPrefab == null)
         {
-            Debug.LogError("ItemUIPrefab не назначен в InventoryViewUI!");
+            Debug.LogError("ItemUIPrefab not assigned in InventoryViewUI.");
             return;
         }
         if (_placedItemsContainer == null)
         {
-            Debug.LogError("PlacedItemsContainer не назначен! Не могу разместить UI предмета.");
+            Debug.LogError("not assigned in InventoryViewUI.");
             return;
         }
 
@@ -92,7 +92,7 @@ public class InventoryViewUI : MonoBehaviour
         {
             GameObject itemGO = Instantiate(_itemUIPrefab, _placedItemsContainer); 
             itemView = itemGO.GetComponent<ItemUIView>();
-            itemView.Initialize(_inventoryManager, itemData, ItemUIView.DragSource.InventoryGrid, anchorPosition);
+            itemView.Init(_inventoryManager, itemData, ItemUIView.DragSource.InventoryGrid, anchorPosition);
             displayedInventoryItemViews[itemData] = itemView;
         }
         
@@ -102,7 +102,7 @@ public class InventoryViewUI : MonoBehaviour
     private void PositionAndSizeItemView(ItemUIView itemView, ItemData itemData, Vector2Int anchorPosition)
     {
         if (_gridLayoutGroup == null) {
-            Debug.LogError("GridLayoutGroup is null in PositionAndSizeItemView. Cannot calculate positions.");
+            Debug.LogError("GridLayoutGroup is null in PositionAndSizeItemView.");
             return;
         }
         if (_placedItemsContainer == null) {

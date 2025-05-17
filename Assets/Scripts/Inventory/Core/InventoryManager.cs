@@ -71,7 +71,7 @@ public class InventoryManager : MonoBehaviour
         _inventoryViewUI?.FillInventory(rows, cols, displayCellCondition);
     }
     
-    public void InitializeCustomGrid(int rows, int cols, int[] shapeArray)
+    private void InitializeCustomGrid(int rows, int cols, int[] shapeArray)
     {
         if (shapeArray == null || shapeArray.Length != rows * cols)
         {
@@ -153,12 +153,11 @@ public class InventoryManager : MonoBehaviour
     
     private ItemData RemoveItem(ItemData item, bool addToItemsViewOnRemove = true)
     {
-        if (item == null || !_placedItems.ContainsKey(item))
+        if (item == null || !_placedItems.TryGetValue(item, out var anchorPos))
         {
             return null; 
         }
 
-        Vector2Int anchorPos = _placedItems[item];
         List<Vector2Int> cellsOccupied = GetWorldCellsForShape(item, anchorPos);
         
         foreach (var cellPos in cellsOccupied)

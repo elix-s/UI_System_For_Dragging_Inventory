@@ -69,14 +69,17 @@ public class ItemData : ScriptableObject
         if (Dimensions.y < 1) Dimensions.y = 1;
 
         int requiredSize = Dimensions.x * Dimensions.y;
+        
         if (ShapeMatrixData == null || ShapeMatrixData.Length != requiredSize)
         {
             bool[] newShape = new bool[requiredSize];
            
             if (ShapeMatrixData != null)
             {
-                int oldWidth = (ShapeMatrixData.Length > 0 && Dimensions.y > 0 && ShapeMatrixData.Length % Dimensions.y == 0) ? ShapeMatrixData.Length / Dimensions.y : Dimensions.x;
-                if (ShapeMatrixData.Length / Dimensions.y == 0 && Dimensions.x > 0) oldWidth = ShapeMatrixData.Length / Dimensions.x; // crude guess if height was 1
+                int oldWidth = (ShapeMatrixData.Length > 0 && Dimensions.y > 0 && ShapeMatrixData.Length % Dimensions.y == 0) ? 
+                    ShapeMatrixData.Length / Dimensions.y : Dimensions.x;
+                if (ShapeMatrixData.Length / Dimensions.y == 0 && Dimensions.x > 0) oldWidth = 
+                    ShapeMatrixData.Length / Dimensions.x; 
                 
                 for (int y = 0; y < Dimensions.y; y++)
                 {

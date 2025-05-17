@@ -19,7 +19,7 @@ public class ItemUIView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public enum DragSource { ItemsView, InventoryGrid }
     public Vector2Int OriginalInventoryAnchor { get; private set; }
     
-    public void Initialize(InventoryManager inventoryManager, ItemData data, DragSource source, Vector2Int inventoryAnchorIfFromGrid = default)
+    public void Init(InventoryManager inventoryManager, ItemData data, DragSource source, Vector2Int inventoryAnchorIfFromGrid = default)
     {
         _rectTransform = GetComponent<RectTransform>();
         if (_canvasGroup == null) _canvasGroup = GetComponent<CanvasGroup>();

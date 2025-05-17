@@ -36,7 +36,7 @@ public class ItemsViewUI : MonoBehaviour
 
         GameObject itemGO = Instantiate(_itemUIPrefab, _itemsContainer);
         ItemUIView itemView = itemGO.GetComponent<ItemUIView>();
-        itemView.Initialize(_inventoryManager, itemData, ItemUIView.DragSource.ItemsView);
+        itemView.Init(_inventoryManager, itemData, ItemUIView.DragSource.ItemsView);
         displayedItemViews[itemData] = itemView;
     }
 
